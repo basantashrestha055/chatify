@@ -1,5 +1,8 @@
+import { sendWelcomeEmail } from '../emails/emailHandlers.js';
+import { ENV } from '../lib/env.js';
 import { generateToken } from '../lib/utils.js';
 import User from '../models/User.js';
+import 'dotenv/config';
 
 export const signup = async (req, res) => {
   try {
@@ -38,6 +41,12 @@ export const signup = async (req, res) => {
     generateToken(newUser._id, res);
 
     res.status(201).json(newUser);
+
+    try {
+      await sendWelcomeEmail(newUser.email, newUser.fullName, ENV.CLIENT_URL);
+    } catch (error) {
+      console.error('Failed to send welcome email', error);
+    }
   } catch (error) {
     console.log('Error in signup controller', error);
     return res.status(500).json({ message: 'Internal Server Error' });

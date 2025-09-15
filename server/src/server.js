@@ -5,10 +5,11 @@ import 'dotenv/config';
 
 import authRoutes from './routes/authRoutes.js';
 import messageRoutes from './routes/messageRoutes.js';
+import { ENV } from './lib/env.js';
 
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = ENV.PORT || 3000;
 
 const __dirname = path.resolve();
 
@@ -18,7 +19,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/messages', messageRoutes);
 
 // make ready for deployment
-if (process.env.NODE_ENV === 'production') {
+if (ENV.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/dist')));
 
   app.get(/.*/, (_, res) => {
