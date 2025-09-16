@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 import {
   MessageCircleIcon,
   LoaderIcon,
-  UserIcon,
   MailIcon,
   LockIcon,
 } from 'lucide-react';
@@ -28,7 +27,7 @@ const LoginPage = () => {
       <div className='relative w-full max-w-6xl md:h-[800px] h-[650px]'>
         <BorderAnimatedContainer>
           <div className='w-full flex flex-col md:flex-row'>
-            {/* FORM CLOUMN - LEFT SIDE */}
+            {/* FORM COLUMN - LEFT SIDE */}
             <div className='md:w-1/2 p-8 flex items-center justify-center md:border-r border-slate-600/30'>
               <div className='w-full max-w-md'>
                 {/* HEADING TEXT */}
