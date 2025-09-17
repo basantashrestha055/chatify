@@ -1,9 +1,9 @@
 const UsersLoadingSkeleton = ({ count = 3 }) => {
   return (
     <div className='space-y-2'>
-      {Array.from({ length: count }).map((item) => (
+      {Array.from({ length: count }).map((_, index) => (
         <div
-          key={item}
+          key={index}
           className='bg-slate-800/30 p-4 rounded-lg animate-pulse'
         >
           <div className='flex items-center space-x-3'>
